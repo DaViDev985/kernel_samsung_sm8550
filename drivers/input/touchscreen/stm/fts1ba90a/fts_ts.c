@@ -2105,12 +2105,12 @@ static u8 fts_event_handler_type_b(struct fts_ts_info *info)
 						input_info(true, &info->client->dev, "%s: FOD %sPRESS\n",
 								__func__, p_gesture_status->gesture_id ? "" : "LONG");
 						info->fod_pressed = true;
-						sysfs_notify(&info->input_dev->dev.kobj, NULL, "fod_pressed");
+						sysfs_notify(&info->board->input_dev->dev.kobj, NULL, "fod_pressed");
 					} else if (p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_FOD_RELEASE) {
 						info->scrub_id = SPONGE_EVENT_TYPE_FOD_RELEASE;
 						input_info(true, &info->client->dev, "%s: FOD RELEASE\n", __func__);
 						info->fod_pressed = false;
-						sysfs_notify(&info->input_dev->dev.kobj, NULL, "fod_pressed");
+						sysfs_notify(&info->board->input_dev->dev.kobj, NULL, "fod_pressed");
 					} else if (p_gesture_status->gesture_id == FTS_SPONGE_EVENT_GESTURE_ID_FOD_OUT) {
 						info->scrub_id = SPONGE_EVENT_TYPE_FOD_OUT;
 						input_info(true, &info->client->dev, "%s: FOD OUT\n", __func__);
